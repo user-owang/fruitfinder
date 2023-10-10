@@ -1,46 +1,54 @@
-* {
-  /* box-sizing: border-box; */
-}
-
-:focus {
-  /* TODO */
+.search-container input:focus {
+  outline-color: rgb(255, 94, 0);
 }
 
 body {
-  /* TODO */
-}
-
-input {
-  /* TODO */
+  background: linear-gradient(to right, gold, rgb(255, 153, 0));
+  height: 100%;
+  width: 100%;
 }
 
 .search-container {
-  /* TODO */
+  width: 500px;
+  margin-top: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.search-container input,
 .search-container .suggestions {
-  /* TODO */
+  margin-top: -15px;
+  padding-top: 0;
+  width: 500px;
+  height: auto;
+  max-height: 350px;
+  background-color: rgba(255, 255, 255, 0.6);
 }
+
 .search-container input {
-  /* TODO */
-}
-.search-container .suggestions {
-  /* TODO */
+  width: 478px;
+  height: 40px;
+  padding-left: 20px;
+  border: none;
+  border-bottom: solid orangered 1px;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 ul {
-  /* TODO */
+  list-style: none;
+  margin-left: 0px;
+  margin-right: 0px;
+  height: auto;
+  max-height: 350px;
+  overflow-y: scroll;
 }
 ul.has-suggestions {
   /* TODO */
 }
 ul li {
-  /* TODO */
+  margin-left: -40px;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 ul li:hover {
-  background-color: brown;
-}
-
-input {
-  /* TODO */
+  background-color: orange;
 }

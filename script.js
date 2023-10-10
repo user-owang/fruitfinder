@@ -84,29 +84,49 @@ const fruits = [
 ];
 
 function search(str) {
-  let results = fruits.filter((fruit) => fruit.toLowerCase().includes(str));
-
-  return results;
+  return fruits.filter((fruit) => fruit.toLowerCase().includes(str));
 }
 
 function searchHandler(e) {
   suggestions.innerHTML = "";
   if (input.value !== "") {
-    search(input.value.toLowerCase()).forEach((element) => {
-      let acItem = document.createElement("li");
-      acItem.innerText = element;
-      suggestions.append(acItem);
-    });
+    search(input.value.toLowerCase()).forEach((element) =>
+      showSuggestions(element)
+    );
+    boldSearchTerm(input.value);
   }
 }
 
-function showSuggestions(results, inputVal) {
-  // TODO
+function showSuggestions(element) {
+  let acItem = document.createElement("li");
+  acItem.innerText = element;
+  suggestions.append(acItem);
+}
+
+function boldSearchTerm(term) {
+  for (let bullet of document.querySelectorAll("li")) {
+    let text = bullet.innerText;
+    if (text.toLowerCase().indexOf(term) > 0) {
+      bullet.innerHTML = text.replace(term, term.bold());
+    } else if (text.toLowerCase().indexOf(term) === 0) {
+      bullet.innerHTML = text
+        .toLocaleLowerCase()
+        .replace(term, capFirst(term).bold());
+    }
+  }
+}
+
+function capFirst(str) {
+  return str.replace(str.charAt(0), str.charAt(0).toUpperCase());
 }
 
 function useSuggestion(e) {
-  input.value = e.target.innerText;
-  searchHandler();
+  if (e.target.parentElement === suggestions) {
+    input.value = e.target.innerText;
+    searchHandler();
+  } else {
+    return;
+  }
 }
 
 input.addEventListener("keyup", searchHandler);
